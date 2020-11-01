@@ -1,0 +1,18 @@
+function git-delete-merged() {
+branch="$(git-branch-name)"
+if [ $branch = master ]
+then
+        echo "Cannot perform this operation on master."
+else
+        git checkout master && \
+        git pull && \
+        git branch -D $branch && \
+        git fetch origin --prune
+fi
+}
+function git-push-upstream(){
+branch="$(git-branch-name)"
+git push -u origin $branch
+}
+export HISTFILESIZE=
+export HISTSIZE=
